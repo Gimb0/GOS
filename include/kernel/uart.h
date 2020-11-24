@@ -1,5 +1,3 @@
-
-
 enum
 {
     // The GPIO registers base address.
@@ -30,3 +28,10 @@ enum
     UART0_ITOP   = (UART0_BASE + 0x88),
     UART0_TDR    = (UART0_BASE + 0x8C),
 };
+
+
+void uart_init();
+
+void uart_putc(unsigned char c);
+
+unsigned char uart_getc();
