@@ -2,13 +2,11 @@
 CC = ./gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gcc
 
 # Set any constants based on the raspberry pi model.  Version 1 has some differences to 2 and 3
-MEMORY = 256
 ifeq ($(RASPI_MODEL),1)
     CPU = arm1176jzf-s
     DIRECTIVES = -D MODEL_1
 else ifeq ($(RASPI_MODEL), 4)
     CPU = cortex-a72
-	MEMORY = 1024
 else
 	CPU = cortex-a7
 endif
@@ -54,4 +52,4 @@ clean:
 	rm $(IMG_NAME)
 
 run: build
-	qemu-system-arm -m $(MEMORY) -M raspi2 -serial stdio -kernel kernel.img
+	qemu-system-arm -m 1024 -M raspi2 -serial stdio -kernel kernel.img
